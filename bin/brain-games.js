@@ -1,5 +1,8 @@
 #!/usr/bin/env node
-import {greet} from '../src/cli.js';
+import {readName} from '../src/cli.js';
+import {playEven} from './brain-even.js';
 
 console.log('Welcome to the Brain Games!');
-greet();
+const playerName = readName();
+console.log(`Hello, ${playerName}!`);
+playEven(playerName);
