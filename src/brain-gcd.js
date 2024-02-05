@@ -4,12 +4,14 @@ import {
   congrats, readAnswer, wrong, getRandomInt, TRIES,
 } from './index.js';
 
-const findGcd = (pair) => {
-  const less = car(pair) < cdr(pair) ? car(pair) : cdr(pair);
-  const more = car(pair) > cdr(pair) ? car(pair) : cdr(pair);
-  let gcd = less;
+const sortPair = (firstNumber, secondNumber) => (firstNumber < secondNumber
+  ? cons(firstNumber, secondNumber)
+  : cons(secondNumber, firstNumber));
+
+const findGcdSorted = (lessNumb, greatNumber) => {
+  let gcd = lessNumb;
   while (gcd > 0) {
-    if (less % gcd === 0 && more % gcd === 0) {
+    if (lessNumb % gcd === 0 && greatNumber % gcd === 0) {
       break;
     }
     gcd -= 1;
@@ -17,21 +19,31 @@ const findGcd = (pair) => {
   return gcd;
 };
 
+const findGcdUnsorted = (firstNumber, secondNumber) => {
+  const sorted = sortPair(firstNumber, secondNumber);
+  return findGcdSorted(car(sorted), cdr(sorted));
+};
+
+const playOneRound = (playerName) => {
+  const firstNumber = getRandomInt(100);
+  const secondNumber = getRandomInt(100);
+  const gcd = findGcdUnsorted(firstNumber, secondNumber);
+  console.log(`Question: ${firstNumber} ${secondNumber}`);
+  const answer = readAnswer();
+  if (parseInt(answer, 10) === gcd) {
+    console.log('Correct!');
+    return 1;
+  }
+  console.log(wrong(answer, gcd));
+  console.log(`Let's try again, ${playerName}!`);
+  return 0;
+};
+
 const playGcd = (playerName) => {
   console.log('Find the greatest common divisor of given numbers.');
   let rightAnswers = 0;
   while (rightAnswers < TRIES) {
-    const numbers = cons(getRandomInt(100), getRandomInt(100));
-    const gcd = findGcd(numbers);
-    console.log(`Question: ${car(numbers)} ${cdr(numbers)}`);
-    const answer = readAnswer();
-    if (parseInt(answer, 10) === gcd) {
-      rightAnswers += 1;
-      console.log('Correct!');
-    } else {
-      console.log(wrong(answer, gcd));
-      console.log(`Let's try again, ${playerName}!`);
-    }
+    rightAnswers += playOneRound(playerName);
   }
   congrats(playerName);
 };
