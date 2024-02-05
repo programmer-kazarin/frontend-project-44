@@ -10,6 +10,13 @@ const getRandomInt = (max) => Math.floor(Math.random() * max);
 
 const TRIES = 3;
 
+const playGame = (gameFunc, playerName) => {
+  let rightAnswers = 0;
+  while (rightAnswers < TRIES) {
+    rightAnswers += gameFunc(playerName);
+  }
+};
+
 export {
-  congrats, readAnswer, wrong, getRandomInt, TRIES,
+  congrats, readAnswer, wrong, getRandomInt, playGame,
 };

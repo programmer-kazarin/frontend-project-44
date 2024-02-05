@@ -1,6 +1,6 @@
 import greet from './cli.js';
 import {
-  congrats, readAnswer, wrong, getRandomInt, TRIES,
+  congrats, readAnswer, wrong, getRandomInt, playGame,
 } from './index.js';
 
 const playOneRound = (playerName) => {
@@ -19,10 +19,7 @@ const playOneRound = (playerName) => {
 
 const playEven = (playerName) => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  let rightAnswers = 0;
-  while (rightAnswers < TRIES) {
-    rightAnswers += playOneRound(playerName);
-  }
+  playGame(playOneRound, playerName);
   congrats(playerName);
 };
 

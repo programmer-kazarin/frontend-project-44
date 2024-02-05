@@ -1,7 +1,7 @@
 import { cons, car, cdr } from '@hexlet/pairs';
 import greet from './cli.js';
 import {
-  congrats, readAnswer, wrong, getRandomInt, TRIES,
+  congrats, readAnswer, wrong, getRandomInt, playGame,
 } from './index.js';
 
 const sortPair = (firstNumber, secondNumber) => (firstNumber < secondNumber
@@ -41,10 +41,7 @@ const playOneRound = (playerName) => {
 
 const playGcd = (playerName) => {
   console.log('Find the greatest common divisor of given numbers.');
-  let rightAnswers = 0;
-  while (rightAnswers < TRIES) {
-    rightAnswers += playOneRound(playerName);
-  }
+  playGame(playOneRound, playerName);
   congrats(playerName);
 };
 
