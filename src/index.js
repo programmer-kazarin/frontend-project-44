@@ -8,6 +8,8 @@ const wrong = (actual, expected) => `'${actual}' is wrong answer ;(. Correct ans
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
 
+const TRIES = 3;
+
 export {
-  congrats, readAnswer, wrong, getRandomInt,
+  congrats, readAnswer, wrong, getRandomInt, TRIES,
 };
