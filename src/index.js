@@ -6,7 +6,7 @@ const readAnswer = () => readlineSync.question('Your answer: ');
 
 const wrong = (actual, expected) => `'${actual}' is wrong answer ;(. Correct answer was '${expected}'.`;
 
-const getRandomInt = (max) => Math.floor(Math.random() * max);
+const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min) + min);
 
 const TRIES = 3;
 

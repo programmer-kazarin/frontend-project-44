@@ -8,3 +8,5 @@
 [Brain-calc demo](https://asciinema.org/a/VKwGte8GXbaRAfYVkmDlMrpVI)
 
 [Brain-gcd demo](https://asciinema.org/a/EIfQvTYuzotSZ8OEyqzraDvXC)
+
+[Brain-progression demo](https://asciinema.org/a/R5LVAuJml3v72qzEBZt1UUZrs)

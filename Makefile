@@ -9,3 +9,6 @@ lint:
 
 fix:
 	npx eslint . --fix
+
+link:
+	sudo npm link
