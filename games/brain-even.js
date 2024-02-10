@@ -4,7 +4,7 @@ import {
 } from './index.js';
 
 const playOneRound = () => {
-  const random = getRandomInt(100,1);
+  const random = getRandomInt(100, 1);
   const isEven = random % 2 === 0;
   console.log(`Question: ${random}`);
   const answer = readAnswer();

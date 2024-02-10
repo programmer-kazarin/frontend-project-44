@@ -4,7 +4,7 @@ import {
   congrats, readAnswer, wrong, getRandomInt,
 } from './index.js';
 
-const calc = (pairOperands, operator) => {
+const calc = (pairOperands, operator, playerName) => {
   console.log(`Question: ${car(pairOperands)} ${operator} ${cdr(pairOperands)}`);
   let rightAnswer;
   const answer = readAnswer();
@@ -34,15 +34,15 @@ const calc = (pairOperands, operator) => {
 const playCalc = (playerName) => {
   console.log('What is the result of the expression?');
   const sumPair = cons(getRandomInt(100), getRandomInt(100));
-  if (calc(sumPair, '+') === false) {
+  if (calc(sumPair, '+', playerName) === false) {
     return;
   }
   const subPair = cons(getRandomInt(100), getRandomInt(50));
-  if (calc(subPair, '-') === false) {
+  if (calc(subPair, '-', playerName) === false) {
     return;
   }
   const multPair = cons(getRandomInt(10), getRandomInt(10));
-  if (calc(multPair, '*') === false) {
+  if (calc(multPair, '*', playerName) === false) {
     return;
   }
   congrats(playerName);
