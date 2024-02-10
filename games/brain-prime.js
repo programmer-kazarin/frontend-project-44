@@ -1,6 +1,6 @@
 import greet from './cli.js';
 import {
-  congrats, readAnswer, wrong, getRandomInt, playGame,
+  readAnswer, wrong, getRandomInt, playGame,
 } from './index.js';
 
 const isPrime = (numb) => {
@@ -31,7 +31,6 @@ const playOneRound = () => {
 const playPrime = (playerName) => {
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
   playGame(playOneRound, playerName);
-  congrats(playerName);
 };
 
 export default () => {

@@ -13,8 +13,14 @@ const TRIES = 3;
 const playGame = (gameFunc, playerName) => {
   let rightAnswers = 0;
   while (rightAnswers < TRIES) {
-    rightAnswers += gameFunc(playerName);
+    const result = gameFunc();
+    if (result === 0) {
+      console.log(`Let's try again, ${playerName}!`);
+      return;
+    }
+    rightAnswers += 1;
   }
+  congrats(playerName);
 };
 
 export {

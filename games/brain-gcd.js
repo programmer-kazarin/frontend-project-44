@@ -1,7 +1,7 @@
 import { cons, car, cdr } from '@hexlet/pairs';
 import greet from './cli.js';
 import {
-  congrats, readAnswer, wrong, getRandomInt, playGame,
+  readAnswer, wrong, getRandomInt, playGame,
 } from './index.js';
 
 const sortPair = (firstNumber, secondNumber) => (firstNumber < secondNumber
@@ -24,7 +24,7 @@ const findGcdUnsorted = (firstNumber, secondNumber) => {
   return findGcdSorted(car(sorted), cdr(sorted));
 };
 
-const playOneRound = (playerName) => {
+const playOneRound = () => {
   const firstNumber = getRandomInt(100);
   const secondNumber = getRandomInt(100);
   const gcd = findGcdUnsorted(firstNumber, secondNumber);
@@ -35,14 +35,12 @@ const playOneRound = (playerName) => {
     return 1;
   }
   console.log(wrong(answer, gcd));
-  console.log(`Let's try again, ${playerName}!`);
   return 0;
 };
 
 const playGcd = (playerName) => {
   console.log('Find the greatest common divisor of given numbers.');
   playGame(playOneRound, playerName);
-  congrats(playerName);
 };
 
 export default () => {

@@ -1,6 +1,6 @@
 import greet from './cli.js';
 import {
-  congrats, readAnswer, wrong, getRandomInt, playGame,
+  readAnswer, wrong, getRandomInt, playGame,
 } from './index.js';
 
 const generateSequence = () => {
@@ -15,7 +15,7 @@ const generateSequence = () => {
   return result;
 };
 
-const playOneRound = (playerName) => {
+const playOneRound = () => {
   const sequence = generateSequence();
   const hideIndex = getRandomInt(sequence.length);
   const hideNumber = sequence[hideIndex];
@@ -27,14 +27,12 @@ const playOneRound = (playerName) => {
     return 1;
   }
   console.log(wrong(answer, hideNumber));
-  console.log(`Let's try again, ${playerName}!`);
   return 0;
 };
 
 const playProgression = (playerName) => {
   console.log('What number is missing in the progression?');
   playGame(playOneRound, playerName);
-  congrats(playerName);
 };
 
 export default () => {
