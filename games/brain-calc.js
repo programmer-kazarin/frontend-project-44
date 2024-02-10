@@ -27,6 +27,7 @@ const calc = (pairOperands, operator) => {
     return true;
   }
   console.log(wrong(answer, rightAnswer));
+  console.log(`Let's try again, ${playerName}!`);
   return false;
 };
 
