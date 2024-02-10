@@ -1,6 +1,6 @@
 import greet from './cli.js';
 import {
-  readAnswer, wrong, getRandomInt, playInfinitely,
+  congrats, readAnswer, wrong, getRandomInt, playGame,
 } from './index.js';
 
 const isPrime = (numb) => {
@@ -22,17 +22,19 @@ const playOneRound = () => {
   const answer = readAnswer();
   if (answer === rightAnswer) {
     console.log('Correct!');
-  } else {
-    console.log(wrong(answer, rightAnswer));
+    return 1;
   }
+  console.log(wrong(answer, rightAnswer));
+  return 0;
 };
 
-const playPrime = () => {
+const playPrime = (playerName) => {
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  playInfinitely(playOneRound);
+  playGame(playOneRound, playerName);
+  congrats(playerName);
 };
 
 export default () => {
-  greet();
-  playPrime();
+  const playerName = greet();
+  playPrime(playerName);
 };

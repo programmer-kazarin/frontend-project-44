@@ -17,12 +17,6 @@ const playGame = (gameFunc, playerName) => {
   }
 };
 
-const playInfinitely = (gameFunc) => {
-  for (;;) {
-    gameFunc();
-  }
-};
-
 export {
-  congrats, readAnswer, wrong, getRandomInt, playGame, playInfinitely,
+  congrats, readAnswer, wrong, getRandomInt, playGame,
 };
