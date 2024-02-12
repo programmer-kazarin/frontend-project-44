@@ -1,7 +1,7 @@
-import greet from './cli.js';
+import greet from '../cli.js';
 import {
   readAnswer, wrong, getRandomInt, playGame,
-} from './index.js';
+} from '../index.js';
 
 const isPrime = (numb) => {
   if (numb <= 1) {

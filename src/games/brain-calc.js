@@ -1,8 +1,8 @@
 import { cons, car, cdr } from '@hexlet/pairs';
-import greet from './cli.js';
+import greet from '../cli.js';
 import {
   congrats, readAnswer, wrong, getRandomInt,
-} from './index.js';
+} from '../index.js';
 
 const calc = (pairOperands, operator, playerName) => {
   console.log(`Question: ${car(pairOperands)} ${operator} ${cdr(pairOperands)}`);
