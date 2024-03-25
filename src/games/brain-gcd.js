@@ -1,5 +1,5 @@
 import { cons, car, cdr } from '@hexlet/pairs';
-import { playGame, } from '../index.js';
+import playGame from '../index.js';
 
 const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min) + min);
 
@@ -31,7 +31,7 @@ export default () => {
     const round = {
       question: `${firstNumber} ${secondNumber}`,
       answer: `${findGcdUnsorted(firstNumber, secondNumber)}`,
-    }
+    };
     questionsAndAnswers.push(round);
   }
   playGame('Find the greatest common divisor of given numbers.', questionsAndAnswers);

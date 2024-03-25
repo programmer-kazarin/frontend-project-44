@@ -1,4 +1,4 @@
-import { playGame, } from '../index.js';
+import playGame from '../index.js';
 
 const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min) + min);
 
@@ -24,7 +24,7 @@ export default () => {
     const round = {
       question: `${sequence.join(' ')}`,
       answer: `${hideNumber}`,
-    }
+    };
     questionsAndAnswers.push(round);
   }
   playGame('What number is missing in the progression?', questionsAndAnswers);

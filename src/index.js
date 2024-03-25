@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 import greet from './cli.js';
 
-const playGame = (question, questionsAndAnswers) => {
+export default (question, questionsAndAnswers) => {
   const playerName = greet();
   console.log(question);
   for (const round of questionsAndAnswers) {
@@ -15,9 +15,5 @@ const playGame = (question, questionsAndAnswers) => {
       return;
     }
   }
-  console.log(`Congratulations, ${playerName}!`)
-};
-
-export {
-  playGame,
+  console.log(`Congratulations, ${playerName}!`);
 };
