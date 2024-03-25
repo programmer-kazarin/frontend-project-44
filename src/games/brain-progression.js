@@ -1,7 +1,6 @@
-import greet from '../cli.js';
-import {
-  readAnswer, wrong, getRandomInt, playGame,
-} from '../index.js';
+import { playGame, } from '../index.js';
+
+const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min) + min);
 
 const generateSequence = () => {
   const constSequenceSize = getRandomInt(10, 5);
@@ -15,27 +14,18 @@ const generateSequence = () => {
   return result;
 };
 
-const playOneRound = () => {
-  const sequence = generateSequence();
-  const hideIndex = getRandomInt(sequence.length);
-  const hideNumber = sequence[hideIndex];
-  sequence[hideIndex] = '..';
-  console.log(`Question: ${sequence.join(' ')}`);
-  const answer = readAnswer();
-  if (parseInt(answer, 10) === hideNumber) {
-    console.log('Correct!');
-    return 1;
-  }
-  console.log(wrong(answer, hideNumber));
-  return 0;
-};
-
-const playProgression = (playerName) => {
-  console.log('What number is missing in the progression?');
-  playGame(playOneRound, playerName);
-};
-
 export default () => {
-  const playerName = greet();
-  playProgression(playerName);
+  const questionsAndAnswers = [];
+  for (let i = 0; i < 3; i += 1) {
+    const sequence = generateSequence();
+    const hideIndex = getRandomInt(sequence.length);
+    const hideNumber = sequence[hideIndex];
+    sequence[hideIndex] = '..';
+    const round = {
+      question: `${sequence.join(' ')}`,
+      answer: `${hideNumber}`,
+    }
+    questionsAndAnswers.push(round);
+  }
+  playGame('What number is missing in the progression?', questionsAndAnswers);
 };
