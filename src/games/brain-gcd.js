@@ -1,8 +1,7 @@
 import { cons, car, cdr } from '@hexlet/pairs';
-import greet from '../cli.js';
-import {
-  readAnswer, wrong, getRandomInt, playGame,
-} from '../index.js';
+import { playGame, } from '../index.js';
+
+const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min) + min);
 
 const sortPair = (firstNumber, secondNumber) => (firstNumber < secondNumber
   ? cons(firstNumber, secondNumber)
@@ -24,26 +23,16 @@ const findGcdUnsorted = (firstNumber, secondNumber) => {
   return findGcdSorted(car(sorted), cdr(sorted));
 };
 
-const playOneRound = () => {
-  const firstNumber = getRandomInt(100);
-  const secondNumber = getRandomInt(100);
-  const gcd = findGcdUnsorted(firstNumber, secondNumber);
-  console.log(`Question: ${firstNumber} ${secondNumber}`);
-  const answer = readAnswer();
-  if (parseInt(answer, 10) === gcd) {
-    console.log('Correct!');
-    return 1;
-  }
-  console.log(wrong(answer, gcd));
-  return 0;
-};
-
-const playGcd = (playerName) => {
-  console.log('Find the greatest common divisor of given numbers.');
-  playGame(playOneRound, playerName);
-};
-
 export default () => {
-  const playerName = greet();
-  playGcd(playerName);
+  const questionsAndAnswers = [];
+  for (let i = 0; i < 3; i += 1) {
+    const firstNumber = getRandomInt(100);
+    const secondNumber = getRandomInt(100);
+    const round = {
+      question: `${firstNumber} ${secondNumber}`,
+      answer: `${findGcdUnsorted(firstNumber, secondNumber)}`,
+    }
+    questionsAndAnswers.push(round);
+  }
+  playGame('Find the greatest common divisor of given numbers.', questionsAndAnswers);
 };
