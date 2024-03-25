@@ -1,7 +1,6 @@
-import greet from '../cli.js';
-import {
-  readAnswer, wrong, getRandomInt, playGame,
-} from '../index.js';
+import { playGame, } from '../index.js';
+
+const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min) + min);
 
 const isPrime = (numb) => {
   if (numb <= 1) {
@@ -15,25 +14,16 @@ const isPrime = (numb) => {
   return 'yes';
 };
 
-const playOneRound = () => {
-  const number = getRandomInt(100);
-  const rightAnswer = isPrime(number);
-  console.log(`Question: ${number}`);
-  const answer = readAnswer();
-  if (answer === rightAnswer) {
-    console.log('Correct!');
-    return 1;
-  }
-  console.log(wrong(answer, rightAnswer));
-  return 0;
-};
-
-const playPrime = (playerName) => {
-  console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  playGame(playOneRound, playerName);
-};
-
 export default () => {
-  const playerName = greet();
-  playPrime(playerName);
+  const questionsAndAnswers = [];
+    for (let i = 0; i < 3; i += 1) {
+      const number = getRandomInt(100);
+      const round = {
+        question: number,
+        answer: isPrime(number),
+      }  
+      questionsAndAnswers.push(round);
+    }
+    
+  playGame('Answer "yes" if given number is prime. Otherwise answer "no".', questionsAndAnswers);
 };
