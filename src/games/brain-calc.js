@@ -3,35 +3,26 @@ import playGame from '../index.js';
 
 const getRandomInt = (max, min = 0) => Math.floor(Math.random() * (max - min) + min);
 
-const generate = (operator) => {
-  const pair = cons(getRandomInt(10), getRandomInt(10));
-  switch (operator) {
-    case '+':
-      return {
-        question: `${car(pair)} + ${cdr(pair)}`,
-        answer: `${car(pair) + cdr(pair)}`,
-      };
-    case '-':
-      return {
-        question: `${car(pair)} - ${cdr(pair)}`,
-        answer: `${car(pair) - cdr(pair)}`,
-      };
-    case '*':
-      return {
-        question: `${car(pair)} * ${cdr(pair)}`,
-        answer: `${car(pair) * cdr(pair)}`,
-      };
-    default:
-      console.error(`Invalid operator "${operator}"`);
-      return false;
-  }
-};
-
 export default () => {
   const questionsAndAnswers = [];
-  questionsAndAnswers.push(generate('+'));
-  questionsAndAnswers.push(generate('-'));
-  questionsAndAnswers.push(generate('*'));
+  const addPair = cons(getRandomInt(100), getRandomInt(100));
+  const addQuestionAndAnswer = {
+    question: `${car(addPair)} + ${cdr(addPair)}`,
+    answer: `${car(addPair) + cdr(addPair)}`,
+  };
+  questionsAndAnswers.push(addQuestionAndAnswer);
+  const subPair = cons(getRandomInt(100), getRandomInt(100));
+  const subQuestionAndAnswer = {
+    question: `${car(subPair)} - ${cdr(subPair)}`,
+    answer: `${car(subPair) - cdr(subPair)}`,
+  };
+  questionsAndAnswers.push(subQuestionAndAnswer);
+  const multPair = cons(getRandomInt(10), getRandomInt(10));
+  const multQuestionAndAnswer = {
+    question: `${car(multPair)} * ${cdr(multPair)}`,
+    answer: `${car(multPair) * cdr(multPair)}`,
+  };
+  questionsAndAnswers.push(multQuestionAndAnswer);
 
   playGame('What is the result of the expression?', questionsAndAnswers);
 };
